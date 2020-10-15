@@ -17,9 +17,7 @@ These are a bunch of programs that I am working on while learning data structure
 - [Variable Sized Array](https://www.hackerrank.com/challenges/variable-sized-arrays/problem)
 
 ## Hash Maps
-- Hash Map implementation
-- [Two Sums](https://leetcode.com/problems/two-sum/)
-- [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/)
+- Hash Map (implementation and all basic to advance level problems with solutions)
 
 ## Random Problems
 - [Covid Run](https://www.codechef.com/OCT20B/problems/CVDRUN)
