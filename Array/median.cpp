@@ -2,9 +2,10 @@
 
 using namespace std;
 
-double median(vector<int> arr1, vector<int> arr2)
+double median(vector<int>& arr1, vector<int>& arr2)
 {
-    
+    if(!arr1.size())
+        
 }
 
 int main()
