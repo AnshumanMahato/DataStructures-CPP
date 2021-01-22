@@ -50,4 +50,13 @@ void linked_list::appened(int val)
     tail = temp;
 }
 
+void linked_list::prepend(int val)
+{
+    NODE *temp;
+    temp = new NODE;
+    temp->value = val;
+    temp->next = head;
+    head = temp;
+}
+
 
