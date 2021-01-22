@@ -16,6 +16,7 @@ public:
     ~linked_list();
     void appened(int);
     void prepend(int);
+    void show();
 };
 
 linked_list::linked_list(int val)
@@ -59,4 +60,28 @@ void linked_list::prepend(int val)
     head = temp;
 }
 
+void linked_list::show()
+{
+    NODE *temp;
+    temp = head;
+    while (temp != NULL)
+    {
+        std::cout<< temp->value <<std::endl;
+        temp = temp->next;
+    }
+    
+}
+
+int main()
+{
+    linked_list list(1);
+    list.show();
+    list.appened(2);
+    list.appened(3);
+    list.show();
+    list.prepend(0);
+    list.prepend(-1);
+    list.show();
+    return 0;
+}
 
