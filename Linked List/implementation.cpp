@@ -16,6 +16,8 @@ public:
     ~linked_list();
     void appened(int);
     void prepend(int);
+    void insert(int,int);
+    int remove(int,int);
     void show();
 };
 
@@ -49,6 +51,7 @@ void linked_list::appened(int val)
     temp->next = NULL;
     tail->next = temp;
     tail = temp;
+    len++;
 }
 
 void linked_list::prepend(int val)
@@ -58,6 +61,7 @@ void linked_list::prepend(int val)
     temp->value = val;
     temp->next = head;
     head = temp;
+    len++;
 }
 
 void linked_list::show()
