@@ -14,6 +14,8 @@ private:
 public:
     linked_list(int);
     ~linked_list();
+    void appened(int);
+    void prepend(int);
 };
 
 linked_list::linked_list(int val)
@@ -36,6 +38,16 @@ linked_list::~linked_list()
     }
     delete(tail);
     len = 0;
+}
+
+void linked_list::appened(int val)
+{
+    NODE *temp;
+    temp = new NODE;
+    temp->value = val;
+    temp->next = NULL;
+    tail->next = temp;
+    tail = temp;
 }
 
 
