@@ -64,6 +64,28 @@ void linked_list::prepend(int val)
     len++;
 }
 
+void linked_list::insert(int pos,int val) // positioning is just like arrays, i.e, starts from 0;
+{
+    if(pos == 0)
+        prepend(val);
+    else if (pos >= len)
+        appened(val);
+    else
+    {
+        NODE *temp, *itr;
+        temp = new NODE;
+        temp->value = val;
+        itr = head;
+        for(int i = 0; i < pos-1; i++)
+        {
+            itr = itr->next;
+        }   
+
+        temp->next = itr->next;
+        itr->next = temp;
+    }
+}
+
 void linked_list::show()
 {
     NODE *temp;
@@ -84,7 +106,8 @@ int main()
     list.appened(3);
     list.show();
     list.prepend(0);
-    list.prepend(-1);
+    list.prepend(-1);   
+    list.insert(3,7);
     list.show();
     return 0;
 }
