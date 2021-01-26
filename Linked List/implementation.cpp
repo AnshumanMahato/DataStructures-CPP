@@ -83,6 +83,7 @@ void linked_list::insert(int pos,int val) // positioning is just like arrays, i.
 
         temp->next = itr->next;
         itr->next = temp;
+        len++;
     }
 }
 
@@ -96,15 +97,27 @@ int linked_list::remove(int pos)
 
     NODE *temp,*itr;
     int removed_val;
-    itr = head;
-    for(int i = 0; i < pos-1; i++)
+
+    if(pos == 0)
     {
-        itr = itr->next;
+        temp = head;
+        head = head->next;
     }
-    temp = itr->next;
+
+    else
+    {
+        itr = head;
+        for(int i = 0; i < pos-1; i++)
+        {   
+            itr = itr->next;
+        }
+        temp = itr->next;
+        itr->next = temp->next;
+    }
+
     removed_val = temp->value;
-    itr->next = temp->next;
     delete(temp);
+    len--;
     return removed_val;   
 }
 
