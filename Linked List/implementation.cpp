@@ -17,7 +17,7 @@ public:
     void appened(int);
     void prepend(int);
     void insert(int,int);
-    int remove(int,int);
+    int remove(int);
     void show();
 };
 
@@ -84,6 +84,27 @@ void linked_list::insert(int pos,int val) // positioning is just like arrays, i.
         temp->next = itr->next;
         itr->next = temp;
     }
+}
+
+int linked_list::remove(int pos)
+{
+    if(pos < 0 || pos >= len)
+    {
+        std::cout << "\nInvalid Index. Should be between 0 and " << len-1;
+        return 0;
+    }
+
+    NODE *temp,*itr;
+    int removed_val;
+    for(int i = 0; i < pos-1; i++)
+    {
+        itr = itr->next;
+    }
+    temp = itr->next;
+    removed_val = temp->value;
+    itr->next = itr->next->next;
+    delete(temp);
+    return removed_val;   
 }
 
 void linked_list::show()
