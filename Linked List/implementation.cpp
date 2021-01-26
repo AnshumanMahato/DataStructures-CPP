@@ -96,13 +96,14 @@ int linked_list::remove(int pos)
 
     NODE *temp,*itr;
     int removed_val;
+    itr = head;
     for(int i = 0; i < pos-1; i++)
     {
         itr = itr->next;
     }
     temp = itr->next;
     removed_val = temp->value;
-    itr->next = itr->next->next;
+    itr->next = temp->next;
     delete(temp);
     return removed_val;   
 }
@@ -111,12 +112,12 @@ void linked_list::show()
 {
     NODE *temp;
     temp = head;
+    std::cout << std::endl;
     while (temp != NULL)
     {
-        std::cout<< temp->value <<std::endl;
+        std::cout<< temp->value <<',';
         temp = temp->next;
     }
-    
 }
 
 int main()
@@ -127,8 +128,13 @@ int main()
     list.appened(3);
     list.show();
     list.prepend(0);
-    list.prepend(-1);   
+    list.prepend(-1); 
+    list.show();  
     list.insert(3,7);
+    list.show();
+    list.remove(3);
+    list.remove(-1);
+    list.remove(100);
     list.show();
     return 0;
 }
