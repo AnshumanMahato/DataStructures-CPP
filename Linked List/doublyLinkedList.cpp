@@ -62,7 +62,9 @@ void linked_list::prepend(int val)
     NODE *temp;
     temp = new NODE;
     temp->value = val;
+    temp->prev = NULL;
     temp->next = head;
+    head->prev = temp;
     head = temp;
     len++;
 }
