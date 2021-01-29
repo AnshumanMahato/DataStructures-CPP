@@ -14,12 +14,17 @@ private:
 public:
     linked_list(int);
     ~linked_list();
-    NODE* get(int);
+    NODE* get_node(int);
     void appened(int);
     void prepend(int);
     void insert(int,int);
     int remove(int);
     void show();
+
+    int get_len()
+    {
+        return len;
+    }
 };
 
 linked_list::linked_list(int val)
@@ -45,7 +50,7 @@ linked_list::~linked_list()
     len = 0;
 }
 
-NODE* linked_list:: get(int index)
+NODE* linked_list:: get_node(int index)
 {
     NODE *itr;
     if(index < 0 || index >= len)
@@ -98,7 +103,7 @@ void linked_list::prepend(int val)
 
 void linked_list::insert(int index,int val) // positioning is just like arrays, i.e, starts from 0;
 {
-    if(index == 0)
+    if(index <= 0)
         prepend(val);
     else if (index >= len)
         appened(val);
@@ -107,7 +112,7 @@ void linked_list::insert(int index,int val) // positioning is just like arrays, 
         NODE *temp, *itr;
         temp = new NODE;
         temp->value = val;
-        itr = get(index);
+        itr = get_node(index);
         temp->next = itr;
         temp->prev = itr->prev;
         itr->prev->next = temp;
@@ -143,7 +148,7 @@ int linked_list::remove(int index)
 
     else
     {
-        temp = get(index);
+        temp = get_node(index);
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
     }
@@ -177,10 +182,15 @@ int main()
     list.prepend(-1); 
     list.show();  
     list.insert(3,7);
+    list.insert(0,17);
+    list.insert(11,33);
     list.show();
     list.remove(3);
     list.remove(-1);
     list.remove(100);
+    list.show();
+    list.remove(0);
+    list.remove(list.get_len()-1);
     list.show();
     return 0;
 }
