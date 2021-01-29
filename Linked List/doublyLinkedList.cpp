@@ -110,6 +110,7 @@ void linked_list::insert(int index,int val) // positioning is just like arrays, 
         itr = get(index);
         temp->next = itr;
         temp->prev = itr->prev;
+        itr->prev->next = temp;
         itr->prev = temp;
         len++;
     }
