@@ -123,24 +123,28 @@ int linked_list::remove(int index)
         return 0;
     }
 
-    NODE *temp,*itr;
+    NODE *temp;
     int removed_val;
 
     if(index == 0)
     {
         temp = head;
         head = head->next;
+        head->prev = NULL;
+    }
+
+    else if(index == len-1)
+    {
+        temp = tail;
+        tail = tail->prev;
+        tail->next = NULL;
     }
 
     else
     {
-        itr = head;
-        for(int i = 0; i < index-1; i++)
-        {   
-            itr = itr->next;
-        }
-        temp = itr->next;
-        itr->next = temp->next;
+        temp = get(index);
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
     }
 
     removed_val = temp->value;
