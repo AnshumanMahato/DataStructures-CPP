@@ -14,10 +14,10 @@ private:
 public:
     linked_list(int);
     ~linked_list();
+    NODE* get(int);
     void appened(int);
     void prepend(int);
     void insert(int,int);
-    NODE* get(int);
     int remove(int);
     void show();
 };
@@ -45,6 +45,33 @@ linked_list::~linked_list()
     len = 0;
 }
 
+NODE* linked_list:: get(int index)
+{
+    NODE *itr;
+    if(index < 0 || index >= len)
+        itr = NULL;
+
+    else if(index < len/2)
+    {
+        itr = head;
+        for(int i = 0; i < index; i++)
+        {
+            itr = itr->next;
+        }   
+    }
+
+    else
+    {
+        itr = tail;
+        for (int i = len-1; i > index; i--)
+        {
+            itr = itr->prev;
+        }    
+    }
+    
+    return itr;
+}
+
 void linked_list::appened(int val)
 {
     NODE *temp;
@@ -69,32 +96,28 @@ void linked_list::prepend(int val)
     len++;
 }
 
-void linked_list::insert(int pos,int val) // positioning is just like arrays, i.e, starts from 0;
+void linked_list::insert(int index,int val) // positioning is just like arrays, i.e, starts from 0;
 {
-    if(pos == 0)
+    if(index == 0)
         prepend(val);
-    else if (pos >= len)
+    else if (index >= len)
         appened(val);
     else
     {
         NODE *temp, *itr;
         temp = new NODE;
         temp->value = val;
-        itr = head;
-        for(int i = 0; i < pos-1; i++)
-        {
-            itr = itr->next;
-        }   
-
-        temp->next = itr->next;
-        itr->next = temp;
+        itr = get(index);
+        temp->next = itr;
+        temp->prev = itr->prev;
+        itr->prev = temp;
         len++;
     }
 }
 
-int linked_list::remove(int pos)
+int linked_list::remove(int index)
 {
-    if(pos < 0 || pos >= len)
+    if(index < 0 || index >= len)
     {
         std::cout << "\nInvalid Index. Should be between 0 and " << len-1;
         return 0;
@@ -103,7 +126,7 @@ int linked_list::remove(int pos)
     NODE *temp,*itr;
     int removed_val;
 
-    if(pos == 0)
+    if(index == 0)
     {
         temp = head;
         head = head->next;
@@ -112,7 +135,7 @@ int linked_list::remove(int pos)
     else
     {
         itr = head;
-        for(int i = 0; i < pos-1; i++)
+        for(int i = 0; i < index-1; i++)
         {   
             itr = itr->next;
         }
