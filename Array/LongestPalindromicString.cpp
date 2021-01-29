@@ -4,7 +4,14 @@ using namespace std;
 
 int pallindrome_substring(string str,int L,int R)
 {
-
+    while (L > 0 && R < str.size())
+    {
+        if(str[L] != str[R])
+            break;
+        L--;
+        R++;
+    }
+    return R-L+1;
 }
 
 string longestPalindromicString(string str)
@@ -14,17 +21,16 @@ string longestPalindromicString(string str)
     {
         int len1 = pallindrome_substring(str,i,i),
             len2 = pallindrome_substring(str,i,i+1);
-        if(len1 > len2 && len1 > max_substr.size())
+        if(len1 > len2)
         {
-            max_substr = str.substr((i-len1/2),len1);
+            if(len1 > max_substr.size())
+                max_substr = str.substr((i-len1/2),len1);
         }
-
         else if(len2 > max_substr.size())
         {
             max_substr = str.substr((i+1-len2/2),len2);
         }
     }
-
     return max_substr;
 }
 
