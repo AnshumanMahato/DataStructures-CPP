@@ -136,20 +136,20 @@ void linked_list::show()
 
 void linked_list::reverse()
 {
-    NODE *temp;
-    int n;
-    for(int i = 0; i < len-1; i++)
-    {
-        temp = head;
-        for (int j = 0; j < len-i-1; j++)
-        {
-            n = temp->value;
-            temp->value = temp->next->value;
-            temp->next->value = n;
-            temp = temp->next;
-        }
+    // NODE *temp;
+    // int n;
+    // for(int i = 0; i < len-1; i++)
+    // {
+    //     temp = head;
+    //     for (int j = 0; j < len-i-1; j++)
+    //     {
+    //         n = temp->value;
+    //         temp->value = temp->next->value;
+    //         temp->next->value = n;
+    //         temp = temp->next;
+    //     }
         
-    }
+    // }
 }
 
 int main()
