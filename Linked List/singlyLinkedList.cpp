@@ -151,6 +151,9 @@ void linked_list::reverse()
         
     // }
 
+    if(head == NULL || head->next == NULL)
+        return;
+
     NODE *first,*second,*third;
     first = head;
     second = first->next;
