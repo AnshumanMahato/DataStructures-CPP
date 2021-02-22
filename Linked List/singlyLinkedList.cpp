@@ -150,6 +150,20 @@ void linked_list::reverse()
     //     }
         
     // }
+
+    NODE *first,*second,*third;
+    first = head;
+    second = first->next;
+    tail = head;
+    while(second)
+    {
+        third = second->next;
+        second->next = first;
+        first = second;
+        second = third;
+    }
+    head = first;
+    tail->next = NULL;
 }
 
 int main()
