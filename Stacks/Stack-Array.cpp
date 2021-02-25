@@ -11,8 +11,12 @@ public:
     void push(int);
     int pop();
     int peek();
-    void get();
+    int get(int);
     void show();
+    bool underflow()
+    {
+        return (top < 0);
+    }
 };
 
 Stack::Stack()
@@ -28,18 +32,24 @@ void Stack::push(int n)
 
 int Stack::peek()
 {
-    if(top < 0)
-    {
-        std::cout<<"Underflow in stack";
-        return INT64_MIN;
-    }
+    if(underflow())
+        return INT32_MIN;
     return stk[top];
 }
 
 int Stack::pop()
 {
-    int n = peek();
+    if(underflow())
+        return INT32_MIN;
+    int n = stk[top--];
     stk.pop_back();
-    top--;
     return n;
+}
+
+int Stack::get(int pos)
+{
+    if(underflow())
+        return INT32_MIN;
+    if(pos < 0 || pos > top)
+        return INT32_MIN;
 }
