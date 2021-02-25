@@ -26,14 +26,20 @@ void Stack::push(int n)
     top++;
 }
 
-int Stack::pop()
+int Stack::peek()
 {
     if(top < 0)
     {
         std::cout<<"Underflow in stack";
         return INT64_MIN;
     }
-    int n = stk[top--];
+    return stk[top];
+}
+
+int Stack::pop()
+{
+    int n = peek();
     stk.pop_back();
+    top--;
     return n;
 }
