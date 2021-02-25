@@ -8,18 +8,32 @@ private:
     int top;
 public:
     Stack();
-    ~Stack();
     void push(int);
     int pop();
     int peek();
-    void traverse();
+    void get();
     void show();
 };
 
-Stack::Stack(/* args */)
-{
+Stack::Stack()
+{      
+    top = -1;
 }
 
-Stack::~Stack()
+void Stack::push(int n)
 {
+    stk.push_back(n);
+    top++;
+}
+
+int Stack::pop()
+{
+    if(top < 0)
+    {
+        std::cout<<"Underflow in stack";
+        return INT64_MIN;
+    }
+    int n = stk[top--];
+    stk.pop_back();
+    return n;
 }
