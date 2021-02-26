@@ -51,5 +51,19 @@ int Stack::get(int pos)
     if(underflow())
         return INT32_MIN;
     if(pos < 0 || pos > top)
-        return INT32_MIN;
+        return INT32_MAX;
+    /*
+    This is the process how stack elements should be accessed. This opeartion is O(n) as we need to move through 
+    all the elements to find the correct position.
+
+    for(int i = top; i >= 0; i--)
+    {
+        if(i == pos)
+            return stk[i];
+    }
+
+    But as this stack is implemented over an array ,so stk[pos] can be used and this will make the function 
+    O(1) instead of O(n).
+    */
+    return stk[pos];
 }
