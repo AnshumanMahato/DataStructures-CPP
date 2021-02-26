@@ -11,18 +11,16 @@ private:
         return (top < 0);
     }
 public:
-    Stack();
+    Stack()
+    {      
+        top = -1;
+    }
     void push(int);
     int pop();
     int peek();
     int get(int);
     void show();
 };
-
-Stack::Stack()
-{      
-    top = -1;
-}
 
 void Stack::push(int n)
 {
@@ -71,14 +69,22 @@ int Stack::get(int pos)
 void Stack::show()
 {
     std::cout << std::endl;
-    for(int i = top; i >= 0; i--)
+    if(underflow)
+        std::cout << "Underflow in Stack";
+    else
     {
-        std::cout << stk[i] << ' ';
+        for(int i = top; i >= 0; i--)
+        {
+            std::cout << stk[i] << ' ';
+        }
     }
 
 }
 
 int main()
 {
-    
+    Stack st;
+    st.show();
+    st.push(0);
+    st.show();
 }
