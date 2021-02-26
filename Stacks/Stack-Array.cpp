@@ -6,6 +6,10 @@ class Stack
 private:
     std::vector<int> stk;
     int top;
+    bool underflow()
+    {
+        return (top < 0);
+    }
 public:
     Stack();
     void push(int);
@@ -13,10 +17,6 @@ public:
     int peek();
     int get(int);
     void show();
-    bool underflow()
-    {
-        return (top < 0);
-    }
 };
 
 Stack::Stack()
