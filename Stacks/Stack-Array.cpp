@@ -67,3 +67,13 @@ int Stack::get(int pos)
     */
     return stk[pos];
 }
+
+void Stack::show()
+{
+    std::cout << std::endl;
+    for(int i = top; i >= 0; i--)
+    {
+        std::cout << stk[i] << ' ';
+    }
+
+}
