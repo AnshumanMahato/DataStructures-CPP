@@ -77,3 +77,8 @@ void Stack::show()
     }
 
 }
+
+int main()
+{
+    
+}
