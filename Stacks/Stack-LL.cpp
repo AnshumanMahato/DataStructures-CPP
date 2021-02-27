@@ -21,12 +21,24 @@ public:
         top = NULL;
         len = 0;
     }
+    ~Stack();
     void push(int);
     int pop();
     int peek();
     int get(int);
     void show();
 };
+
+Stack::~Stack()
+{
+    node *temp;
+    while(top!=NULL)
+    {
+        temp = top;
+        top = top->next;
+        delete temp;
+    }
+}
 
 void Stack::push(int n)
 {
