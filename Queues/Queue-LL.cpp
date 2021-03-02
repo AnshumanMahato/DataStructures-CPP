@@ -18,11 +18,11 @@ private:
 public:
     Queue();
     ~Queue();
-    void enqueue();
+    void enqueue(int);
     int dequeue();
     int getFront();
     int getRear();
-    int get();
+    int get(int);
     void show();  
 };
 
@@ -35,3 +35,23 @@ Queue::Queue()
 Queue::~Queue()
 {
 }
+
+void Queue::enqueue(int n)
+{
+    NODE *temp = new NODE;
+    temp->data = n;
+    temp->next = NULL;
+    if(underflow)
+        front = rear = temp;
+    else
+    {
+        rear->next = temp;
+        rear = temp;
+    }
+
+}
+int dequeue();
+int getFront();
+int getRear();
+int get(int pos);
+void show();  
