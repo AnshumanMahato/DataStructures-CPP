@@ -50,6 +50,7 @@ void Queue::enqueue(int n)
     }
 
 }
+
 int Queue::dequeue()
 {
     if(underflow())
@@ -60,6 +61,7 @@ int Queue::dequeue()
     delete temp;
     return n;
 }
+
 int getFront();
 int getRear();
 int get(int pos);
