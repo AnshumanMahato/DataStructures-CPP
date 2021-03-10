@@ -92,4 +92,15 @@ int Queue::get(int pos)
     return INT32_MAX;
 }
 
-void show();  
+void Queue::show()
+{
+    if(underflow())
+        std::cout << "Queue is Empty.";
+    else
+    {
+        for(NODE *itr = front; itr != NULL; itr = itr->next)
+        {
+            std::cout << itr->data << ' ';
+        }
+    }
+}  
