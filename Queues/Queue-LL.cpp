@@ -41,7 +41,7 @@ void Queue::enqueue(int n)
     NODE *temp = new NODE;
     temp->data = n;
     temp->next = NULL;
-    if(underflow)
+    if(underflow())
         front = rear = temp;
     else
     {
@@ -131,7 +131,7 @@ int main()
         case 2:
             value = q.dequeue();
             if(value == INT32_MIN)
-                std::cout << "Underflow in stack.";
+                std::cout << "Queue is empty.";
             else
                 std::cout << "Deleted Value:" << value;
             break;
@@ -171,7 +171,7 @@ int main()
             std::cout << "Invalid option";
             break;
         }
-    } while (n != 6);
+    } while (n != 7);
     
     return 0;
 }
