@@ -48,7 +48,7 @@ void Queue::enqueue(int n)
         rear->next = temp;
         rear = temp;
     }
-
+    len++;
 }
 
 int Queue::dequeue()
@@ -57,12 +57,39 @@ int Queue::dequeue()
         return INT32_MIN;
     NODE *temp = front;
     front = front->next;
+    len--;
     int n = temp->data;
     delete temp;
     return n;
 }
 
-int getFront();
-int getRear();
-int get(int pos);
+int Queue::getFront()
+{
+    if(underflow())
+        return INT32_MIN;
+    return front->data;
+}
+
+int Queue::getRear()
+{
+    if(underflow())
+        return INT32_MIN;
+    return rear->data;
+}
+
+int Queue::get(int pos)
+{
+    if(underflow())
+        return INT32_MIN;
+    NODE *temp = front;
+    for(int i = 0; i < len; i++)
+    {
+        if(i == pos)
+            return temp->data;
+        temp = temp->next;
+    }
+
+    return INT32_MAX;
+}
+
 void show();  
