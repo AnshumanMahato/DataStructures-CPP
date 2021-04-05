@@ -4,4 +4,68 @@ struct node
 {
     int value;
     node *left, *right;
+};
+
+class BST
+{
+private:
+    node *root;
+public:
+    BST();
+    ~BST();
+    void insert(int);
+    node* lookup(int);
+};
+
+BST::BST()
+{
+    this->root = NULL;
+}
+
+BST::~BST()
+{
+}
+
+void BST::insert(int value)
+{
+    node *temp = new node;
+    temp->value = value;
+    temp->left = temp->right = NULL;
+
+    if(root == NULL)
+        root = temp;
+    else
+    {
+        node *itr = root;
+        while(true)
+        {
+            if(value > itr->value)
+            {
+                if(itr->right == NULL)
+                {
+                    itr->right = temp;
+                    break;
+                }
+                else    
+                    itr = itr->right;
+            }
+
+            else if (itr->value < value)
+            {
+                if(itr->left == NULL)
+                {
+                    itr->left = temp;
+                    break;
+                }
+                else    
+                    itr = itr->left;
+            }
+            
+            else
+            {
+                delete temp;
+                break;
+            }
+        }
+    }
 }
