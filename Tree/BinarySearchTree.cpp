@@ -69,3 +69,19 @@ void BST::insert(int value)
         }
     }
 }
+
+node* BST::lookup(int value)
+{
+    node *itr = root;
+    while(itr != NULL)
+    {
+        if(value == itr->value)
+            return itr;
+        if(value > itr->value)    
+            itr = itr->right;
+        else if (itr->value < value)
+            itr = itr->left;
+    }
+
+    return NULL;
+}
