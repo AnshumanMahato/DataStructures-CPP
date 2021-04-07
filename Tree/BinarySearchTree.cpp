@@ -15,6 +15,7 @@ public:
     ~BST();
     void insert(int);
     node* lookup(int);
+    node* remove(int);
 };
 
 BST::BST()
