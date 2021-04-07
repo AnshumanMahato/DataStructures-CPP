@@ -86,3 +86,8 @@ node* BST::lookup(int value)
 
     return NULL;
 }
+
+node* BST::remove(int value)
+{
+    
+}
