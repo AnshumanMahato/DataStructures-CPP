@@ -89,5 +89,5 @@ node* BST::lookup(int value)
 
 node* BST::remove(int value)
 {
-    
+    /*this is weird*/ 
 }
