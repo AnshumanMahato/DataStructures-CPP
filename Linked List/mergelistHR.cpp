@@ -75,56 +75,35 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
     if(head2 == NULL)
         return head1;
         
-    SinglyLinkedListNode *head,*temp,*itr1,*itr2,*curr;
-    int value;
-    
-    itr2 = head2;
-    itr1 = head1;
-    head = NULL;
-    
-    while (itr1 != NULL && itr2 != NULL) {
-        if(itr1->data > itr2->data)
-        {
-            value = itr1->data;
-            itr1 = itr1->next;
-        }
-        else
-        {
-            value = itr2->data;
-            itr2 = itr2->next;
-        }
-        temp = new SinglyLinkedListNode(value);
-        if(head == NULL){
-            curr = head = temp;
-        }
-        else {
-            curr->next = temp;
-            curr = curr->next;
-        }
-        
+    SinglyLinkedListNode *head,*temp,*itr,*curr;
+    if(head1->data < head2->data)
+    {
+        head = head1;
+        temp = head2;
     }
-    
-    while (itr1 != NULL) {
-        
-        value = itr1->data;
-        itr1 = itr1->next;
-        
-        temp = new SinglyLinkedListNode(value);
-        curr->next = temp;
-        curr = curr->next;
+    else
+    {
+        head = head2;
+        temp = head1;
+    }
 
-    }
-    
-    while (itr2 != NULL) {
-        
-        value = itr2->data;
-        itr1 = itr2->next;
-        
-        temp = new SinglyLinkedListNode(value);
-        curr->next = temp;
-        curr = curr->next;
+    itr = head;
 
+    while(temp!=NULL && itr->next != NULL)
+    {
+        if(itr->next->data > temp->data)
+        {
+            curr = temp;
+            temp = curr->next;
+            curr->next = itr->next;
+            itr->next = curr;
+        }
+        itr = itr->next;
     }
+
+    if(temp!=NULL)
+        itr->next = temp;
+    
     return head;
 }
 
