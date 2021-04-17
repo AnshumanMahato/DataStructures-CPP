@@ -69,8 +69,16 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  *
  */
 int getNode(SinglyLinkedListNode* head, int positionFromTail) {
-
-
+    std::vector<int> list;
+    SinglyLinkedListNode *itr = head;
+    while (itr!=NULL)
+    {
+        list.push_back(itr->data);
+        itr = itr->next;
+    }
+    
+    int size = list.size();
+    return list[size-1-positionFromTail];
 }
 
 int main()
