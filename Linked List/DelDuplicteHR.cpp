@@ -70,7 +70,22 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  */
 SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* head) {
 
+    SinglyLinkedListNode *itr,*temp;
+    itr = head;
+    while (itr->next)
+    {
+        if(itr->next->data == itr->data)
+        {
+            temp = itr->next;
+            itr->next = temp->next;
+            delete temp;
+        }
 
+        else
+            itr = itr->next;
+    }
+    
+    return head;
 }
 
 int main()
