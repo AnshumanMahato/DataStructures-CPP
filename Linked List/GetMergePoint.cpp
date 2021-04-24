@@ -90,7 +90,19 @@ SinglyLinkedListNode* reverse(SinglyLinkedListNode* head) {
 
 int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
 
+    SinglyLinkedListNode *itr1,*itr2;
+    itr1 = reverse(head1);
+    itr2 = reverse(head2);
 
+    while(itr1 && itr2)
+    {
+        if(itr1->next != itr2->next)
+            break;
+        itr1 = itr1->next;
+        itr2 = itr2->next;
+    }
+
+    return itr1->data;
 }
 
 int main()
