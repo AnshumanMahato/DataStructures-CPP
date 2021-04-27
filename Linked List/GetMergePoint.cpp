@@ -69,66 +69,25 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
  *
  */
 
-SinglyLinkedListNode* getNode(SinglyLinkedListNode* head, int pos)
-{
-    SinglyLinkedListNode *itr = head;
-    int c = 0;
-    while(itr != NULL)
-    {
-        if(c == pos)
-            return itr;
-        c++;
-        itr =  itr->next;
-    }
-
-    return NULL;
-}
-
 int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
     
-    SinglyLinkedListNode *itr1, *itr2;
-    int s1  = 0, s2 = 0;
+    SinglyLinkedListNode *itr,*temp;
 
-    itr1 = head1;
-    itr2 = head2;
-
-    while (itr1 != NULL && itr2 != NULL)
+    itr = head1;
+    while(itr)
     {
-        if(itr1 != NULL)
-        {
-            s1++;
-            itr1 = itr1->next;
-        }
-        if(itr2 != NULL)
-        {
-            s2++;
-            itr2 = itr2->next;
-        }
+        temp = itr->next;
+        itr->next = NULL;
+        itr = temp; 
     }
 
-    if(s1 > s2)
+    itr = head2;
+    while(itr->next)
     {
-        itr1 = getNode(head1,s2-s1);
-        itr2 = head2;
-    }
-    else if( s1 < s2)
-    {
-        itr2 = getNode(head2,s1-s2);
-        itr1 = head1;
-    }
-    else
-    {
-        itr1 = head1;
-        itr2 = head2; 
+        itr = itr->next;
     }
 
-    while (itr1 != itr2)
-    {
-        itr1 = itr1->next;
-        itr2 = itr2->next;
-    }
-        
-    return itr1->data;
+    return itr->data;
 }
 
 int main()
