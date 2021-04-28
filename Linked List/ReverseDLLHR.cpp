@@ -73,8 +73,23 @@ void free_doubly_linked_list(DoublyLinkedListNode* node) {
  *
  */
 DoublyLinkedListNode* reverse(DoublyLinkedListNode* head) {
-    
+    DoublyLinkedListNode *itr,*temp;
+    itr = head;
+    while (itr)
+    {
+        temp = itr->next;
+        itr->next = itr->prev;
+        itr->prev = temp;
+        if (!temp)
+        {
+            head = itr;
+        }
+        
+        itr = temp;
+    }
 
+    return head;
+    
 }
 
 int main()
