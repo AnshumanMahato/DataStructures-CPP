@@ -16,6 +16,7 @@ public:
     void insert(int);
     node* lookup(int);
     node* remove(int);
+    void traverse(node*);
 };
 
 BST::BST()
@@ -90,4 +91,13 @@ node* BST::lookup(int value)
 node* BST::remove(int value)
 {
     /*this is weird*/ 
+}
+
+void BST::traverse(node* itr)
+{
+    if(itr->left)
+        traverse(itr->left);
+    std::cout<<itr->value;
+    if(itr->right)
+        traverse(itr->right);
 }
