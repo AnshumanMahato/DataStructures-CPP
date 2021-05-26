@@ -23,3 +23,21 @@ int main()
     
     return 0;
 }
+
+void selectionSort(std::vector<int>& data)
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        int pos = i;
+        for (int j = i; j < data.size(); j++)
+        {
+            if(data[j] < data[pos])
+                pos = j;
+        }
+        
+        int temp = data[i];
+        data[i] = data[pos];
+        data[pos] = temp;
+    }
+    
+}
