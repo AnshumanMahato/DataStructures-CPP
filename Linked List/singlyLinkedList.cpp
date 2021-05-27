@@ -157,19 +157,14 @@ void linked_list::reverse()
 int main()
 {
     linked_list list(1);
-    list.show();
     list.appened(2);
     list.appened(3);
-    list.show();
     list.prepend(0);
     list.prepend(-1); 
-    list.show();  
     list.insert(3,7);
+    std::cout<<"\nLinked List:";
     list.show();
-    list.remove(3);
-    list.remove(-1);
-    list.remove(100);
-    list.show();
+    std::cout<<"\nReversed Linked List:";
     list.reverse();
     list.show();
     return 0;
