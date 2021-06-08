@@ -1,0 +1,119 @@
+#include <bits/stdc++.h>
+
+struct node
+{
+    int value;
+    node *left, *right;
+};
+
+class BST
+{
+private:
+    node *root;
+public:
+    BST();
+    ~BST();
+    void insert(int);
+    node* lookup(int);
+    node* remove(int);
+    void traverse();
+};
+
+BST::BST()
+{
+    this->root = NULL;
+}
+
+BST::~BST()
+{
+}
+
+void BST::insert(int value)
+{
+    node *temp = new node;
+    temp->value = value;
+    temp->left = temp->right = NULL;
+
+    if(root == NULL)
+        root = temp;
+    else
+    {
+        node *itr = root;
+        while(true)
+        {
+            if(value > itr->value)
+            {
+                if(itr->right == NULL)
+                {
+                    itr->right = temp;
+                    break;
+                }
+                else    
+                    itr = itr->right;
+            }
+
+            else if (itr->value < value)
+            {
+                if(itr->left == NULL)
+                {
+                    itr->left = temp;
+                    break;
+                }
+                else    
+                    itr = itr->left;
+            }
+            
+            else
+            {
+                delete temp;
+                break;
+            }
+        }
+    }
+}
+
+node* BST::lookup(int value)
+{
+    node *itr = root;
+    while(itr != NULL)
+    {
+        if(value == itr->value)
+            return itr;
+        if(value > itr->value)    
+            itr = itr->right;
+        else if (itr->value < value)
+            itr = itr->left;
+    }
+
+    return NULL;
+}
+
+node* BST::remove(int value)
+{
+    /*this is weird*/ 
+}
+
+void BST::traverse()
+{
+    node* currentNode = root;
+    std::vector<int> list;
+    std::queue<node*> que;
+    que.push(currentNode);
+
+    while (!que.empty())
+    {
+        currentNode = que.front();
+        list.push_back(currentNode->value);
+        if(currentNode->left)
+            que.push(currentNode->left);
+        if(currentNode->right)
+            que.push(currentNode->right);
+        que.pop();
+    }
+
+    for(int i = 0; i < list.size(); i++) 
+    {
+        std::cout<<list[i]<<std::endl;
+    }
+
+}
