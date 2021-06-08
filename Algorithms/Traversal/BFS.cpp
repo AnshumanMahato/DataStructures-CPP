@@ -52,7 +52,7 @@ void BST::insert(int value)
                     itr = itr->right;
             }
 
-            else if (itr->value < value)
+            else if (value < itr->value)
             {
                 if(itr->left == NULL)
                 {
@@ -116,4 +116,20 @@ void BST::traverse()
         std::cout<<list[i]<<std::endl;
     }
 
+}
+
+int main()
+{
+    BST b;
+    b.insert(9);
+    b.insert(4);
+    b.insert(6);
+    b.insert(20);
+    b.insert(170);
+    b.insert(15);
+    b.insert(1);
+
+    b.traverse();
+
+    return 0;
 }
