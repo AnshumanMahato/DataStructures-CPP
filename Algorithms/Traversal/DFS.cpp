@@ -108,18 +108,18 @@ void BST::traversePreorder(node* currentNode,std::vector<int>& list)
 void BST::traverseInorder(node* currentNode,std::vector<int>& list)
 {
     if(currentNode->left)
-        traversePreorder(currentNode->left,list);
+        traverseInorder(currentNode->left,list);
     list.push_back(currentNode->value);
     if(currentNode->right)
-        traversePreorder(currentNode->right,list);
+        traverseInorder(currentNode->right,list);
 }
 
 void BST::traversePostorder(node* currentNode,std::vector<int>& list)
 {
     if(currentNode->left)
-        traversePreorder(currentNode->left,list);
+        traversePostorder(currentNode->left,list);
     if(currentNode->right)
-        traversePreorder(currentNode->right,list);
+        traversePostorder(currentNode->right,list);
     list.push_back(currentNode->value);
 }
 
@@ -152,6 +152,8 @@ int main()
     b.insert(1);
 
     b.DFS(1);
+    b.DFS(2);
+    b.DFS(3);
 
     return 0;
 }
