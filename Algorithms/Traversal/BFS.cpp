@@ -95,14 +95,13 @@ node* BST::remove(int value)
 
 void BST::traverse()
 {
-    node* currentNode = root;
     std::vector<int> list;
     std::queue<node*> que;
-    que.push(currentNode);
+    que.push(this->root);
 
     while (!que.empty())
     {
-        currentNode = que.front();
+        node* currentNode = que.front();
         list.push_back(currentNode->value);
         if(currentNode->left)
             que.push(currentNode->left);
