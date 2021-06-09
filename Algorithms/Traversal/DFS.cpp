@@ -16,7 +16,10 @@ public:
     void insert(int);
     node* lookup(int);
     node* remove(int);
-    void traverse();
+    void DFS(int);
+    void traversePreorder(node*,std::vector<int>&);
+    void traverseInorder(node*,std::vector<int>&);
+    void traversePostorder(node*,std::vector<int>&);
 };
 
 BST::BST()
@@ -93,9 +96,48 @@ node* BST::remove(int value)
     /*this is weird*/ 
 }
 
-void BST::traverse()
+void BST::traversePreorder(node* currentNode,std::vector<int>& list)
 {
+    list.push_back(currentNode->value);
+    if(currentNode->left)
+        traversePreorder(currentNode->left,list);
+    if(currentNode->right)
+        traversePreorder(currentNode->right,list);
+}
 
+void BST::traverseInorder(node* currentNode,std::vector<int>& list)
+{
+    if(currentNode->left)
+        traversePreorder(currentNode->left,list);
+    list.push_back(currentNode->value);
+    if(currentNode->right)
+        traversePreorder(currentNode->right,list);
+}
+
+void BST::traversePostorder(node* currentNode,std::vector<int>& list)
+{
+    if(currentNode->left)
+        traversePreorder(currentNode->left,list);
+    if(currentNode->right)
+        traversePreorder(currentNode->right,list);
+    list.push_back(currentNode->value);
+}
+
+void BST::DFS(int key)
+{
+    std::vector<int> list;
+
+    if(key == 1)
+        traversePreorder(root,list);
+    if(key == 2)
+        traverseInorder(root,list);
+    if(key == 3)
+        traversePostorder(root,list);
+
+    for(int i = 0; i < list.size(); i++) 
+        std::cout<<list[i]<<' ';
+
+    std::cout<<std::endl;
 }
 
 int main()
@@ -109,7 +151,7 @@ int main()
     b.insert(15);
     b.insert(1);
 
-    b.traverse();
+    b.DFS(1);
 
     return 0;
 }
