@@ -151,9 +151,9 @@ int main()
     b.insert(15);
     b.insert(1);
 
-    b.DFS(1);
-    b.DFS(2);
-    b.DFS(3);
+    b.DFS(1); // Preorder
+    b.DFS(2); // Inorder
+    b.DFS(3); // Postorder
 
     return 0;
 }
