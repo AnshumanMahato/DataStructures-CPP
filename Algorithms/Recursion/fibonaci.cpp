@@ -2,20 +2,27 @@
 
 int fibonacci(int);
 
+int count = 0;
+
 int main()
 {
     int num;
     std::cout<<"Enter no.";
     std::cin>>num;
-    std::cout<<fibonacci(num);
+    for (int i = 0; i <= num ; i++)
+    {
+        std::cout<<fibonacci(i)<<' ';
+    }
+
+    std::cout<<std::endl<<count;
     return 0;
 }
 
-int fibonacci(int n)
+int fibonacci(int key)
 {
-    if(n==1)
-        return 0;
-    if(n==2)
-        return 1;
-    return fibonacci(n-1) + fibonacci(n-2);
+    count++;
+    if(key < 2)
+        return key;
+    else
+        return fibonacci(key-1) + fibonacci(key-2);
 }

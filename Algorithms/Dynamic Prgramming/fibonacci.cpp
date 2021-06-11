@@ -2,6 +2,8 @@
 
 int fibonacci(int);
 
+int count=0;
+
 int main()
 {
     int input;
@@ -12,6 +14,7 @@ int main()
         std::cout<<fibonacci(i)<<' ';
     }
 
+    std::cout<<std::endl<<count;
     return 0;
 }
 
@@ -20,6 +23,7 @@ int fibonacci(int key)
     static std::unordered_map<int,int> cache;
     if(cache.find(key) == cache.end())
     {
+        count++;
         if(key < 2)
             cache[key] = key;
         else
