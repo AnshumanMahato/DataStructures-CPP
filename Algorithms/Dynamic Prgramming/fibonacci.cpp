@@ -7,7 +7,11 @@ int main()
     int input;
     std::cin>>input;
 
-    std::cout<<fibonacci(input);
+    for (int i = 0; i <= input ; i++)
+    {
+        std::cout<<fibonacci(i)<<' ';
+
+    }
 
     return 0;
 }
