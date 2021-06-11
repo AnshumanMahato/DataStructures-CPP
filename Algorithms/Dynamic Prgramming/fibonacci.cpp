@@ -10,7 +10,6 @@ int main()
     for (int i = 0; i <= input ; i++)
     {
         std::cout<<fibonacci(i)<<' ';
-
     }
 
     return 0;
