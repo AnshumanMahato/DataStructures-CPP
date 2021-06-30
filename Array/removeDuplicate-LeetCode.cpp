@@ -15,7 +15,7 @@ int removeDuplicates(vector<int>& nums) {
             i--;
         }
         
-        return 0;
+        return last;
         
 }
 
