@@ -4,16 +4,17 @@ using namespace std;
 
 int removeElement(vector<int>& nums, int val) {
         int k = nums.size();
-        for(int i = 0;i<nums.size();i++)
+        for(int i = 0;i<k;i++)
         {
             if(nums[i] == val)
             {
-                for(int j = i; j < nums.size()-1;j++) 
+                for(int j = i; j < k-1;j++) 
                 {
                     nums[j] = nums[j+1];
                     
                 }
                 k--;
+                i--;
             }
         }
         
@@ -22,9 +23,9 @@ int removeElement(vector<int>& nums, int val) {
 
 int main()
 {
-    vector<int> nums = {}; // Input array
-    int val = 3; // Value to remove
-    vector<int> expectedNums = {}; // The expected answer with correct length.
+    vector<int> nums = {0,1,2,2,3,0,4,2}; // Input array
+    int val = 2; // Value to remove
+    vector<int> expectedNums = {0,1,4,0,3}; // The expected answer with correct length.
                             // It is sorted with no values equaling val.
 
     int k = removeElement(nums, val); // Calls your implementation
