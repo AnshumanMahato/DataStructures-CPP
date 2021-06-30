@@ -3,22 +3,19 @@
 using namespace std;
 
 int removeElement(vector<int>& nums, int val) {
-        int k = nums.size();
-        for(int i = 0;i<k;i++)
+    int left = 0,right = nums.size();
+        
+        while(left < right)
         {
-            if(nums[i] == val)
+            if(nums[left] == val)
             {
-                for(int j = i; j < k-1;j++) 
-                {
-                    nums[j] = nums[j+1];
-                    
-                }
-                k--;
-                i--;
+                nums[left] = nums[--right];
             }
+            else
+                left++;
         }
         
-        return k;
+        return left;
     }
 
 int main()
