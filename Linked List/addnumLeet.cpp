@@ -33,11 +33,24 @@
         return n;
     }
 
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int num1,num2;
+    ListNode* addTwoNumbers(ListNode* n1, ListNode* n2) {
+        int num;
         ListNode *itr,*res,*temp;
 
-        num1 = getNum(l1);
+        num = getNum(n1) + getNum(n2);
+
+        res = new ListNode(num%10);
+        itr = res;
+        num /= 10;
+
+        while (num)
+        {
+            temp = new ListNode(num%10);
+            itr->next = temp;
+            itr = temp;
+            num /= 10;
+        }
+        
         
         return res;
     }
