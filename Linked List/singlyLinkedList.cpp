@@ -154,19 +154,19 @@ void linked_list::reverse()
     tail->next = NULL;
 }
 
-int main()
-{
-    linked_list list(1);
-    list.appened(2);
-    list.appened(3);
-    list.prepend(0);
-    list.prepend(-1); 
-    list.insert(3,7);
-    std::cout<<"\nLinked List:";
-    list.show();
-    std::cout<<"\nReversed Linked List:";
-    list.reverse();
-    list.show();
-    return 0;
-}
+// int main()
+// {
+//     linked_list list(1);
+//     list.appened(2);
+//     list.appened(3);
+//     list.prepend(0);
+//     list.prepend(-1); 
+//     list.insert(3,7);
+//     std::cout<<"\nLinked List:";
+//     list.show();
+//     std::cout<<"\nReversed Linked List:";
+//     list.reverse();
+//     list.show();
+//     return 0;
+// }
 
