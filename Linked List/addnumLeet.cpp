@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<stdarg.h>
 #include<math.h>
  class ListNode
   {
@@ -21,8 +22,8 @@
     
     int getNum(ListNode *num){
         ListNode *itr = num;
-        int n = 0;
-        int multipler = 1;
+        long long n = 0;
+        long long multipler = 1;
         while(itr)
         {
             n += itr->val * multipler;
@@ -34,7 +35,7 @@
     }
 
     ListNode* addTwoNumbers(ListNode* n1, ListNode* n2) {
-        int num;
+        long long num;
         ListNode *itr,*res,*temp;
 
         num = getNum(n1) + getNum(n2);
@@ -55,27 +56,39 @@
         return res;
     }
 
-    ListNode* num3dig(int ones,int tens,int hunds) {
-        ListNode *l = new ListNode(ones);
-        l->next = new ListNode(tens);
-        l->next->next = new ListNode(hunds);
+    ListNode* numToList(int digits, ...) {
 
-        return l;
+        va_list args;
+        va_start(args,digits);
+
+        int i = 1;
+        ListNode *list = new ListNode(va_arg(args,int));
+        ListNode *itr =  list;
+
+        while (i < digits)
+        {
+            ListNode *temp = new ListNode(va_arg(args,int));
+            itr->next = temp;
+            itr = temp;
+            i++;
+        }
+
+        va_end(args);
+        return list;
     }
+
+    // Test for this input 
+    // [9]
+    // [1,9,9,9,9,9,9,9,9,9]
 
     int main()
     {
-        ListNode *l1 = num3dig(2,4,3),
-                 *l2 = num3dig(5,6,4); 
+        ListNode *l1 = numToList(1,9),
+                 *l2 = numToList(10,1,9,9,9,9,9,9,9,9,9); 
         
         ListNode *l3 = addTwoNumbers(l1,l2);
 
-        std::cout<<getNum(l1)<<' '<<getNum(l2);
-
-        for (ListNode *itr = l3; itr != nullptr; itr = itr->next)
-        {   
-            std::cout<<itr->val;
-        }
+        std::cout<<getNum(l1)<<' '<<getNum(l2)<<' '<<getNum(l3);
         
 
         return 0;
